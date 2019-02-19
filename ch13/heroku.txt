@@ -1,0 +1,35 @@
+pip install dj-database-url dj-static gunicorn psycopg2
+
+
+pip freeze > requirements.txt
+
+
+heroku login
+
+git init
+
+heroku git:remote -a ehappyboard
+
+heroku config:set DJANGO_SETTINGS_MODULE=board.prod_settings
+
+git add .
+
+git commit -am "init commit"
+
+git push heroku master
+
+heroku run python manage.py migrate
+
+heroku run python manage.py createsuperuser
+
+heroku ps:scale web=1
+
+heroku open
+
+
+
+
+
+heroku git:clone -a ehappyboard
+
+
